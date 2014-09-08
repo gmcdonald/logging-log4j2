@@ -38,16 +38,16 @@ import org.apache.logging.log4j.core.config.DefaultConfiguration;
 import org.apache.logging.log4j.core.config.NullConfiguration;
 import org.apache.logging.log4j.core.config.Reconfigurable;
 import org.apache.logging.log4j.core.jmx.Server;
+import org.apache.logging.log4j.core.spi.ShutdownRegistrationStrategy;
+import org.apache.logging.log4j.core.spi.impl.DefaultShutdownRegistrationStrategy;
 import org.apache.logging.log4j.core.util.Assert;
-import org.apache.logging.log4j.core.util.DefaultShutdownRegistrationStrategy;
 import org.apache.logging.log4j.core.util.Loader;
 import org.apache.logging.log4j.core.util.NetUtils;
-import org.apache.logging.log4j.core.util.ShutdownRegistrationStrategy;
 import org.apache.logging.log4j.message.MessageFactory;
 import org.apache.logging.log4j.spi.AbstractLogger;
 import org.apache.logging.log4j.util.PropertiesUtil;
 
-import static org.apache.logging.log4j.core.util.ShutdownRegistrationStrategy.SHUTDOWN_HOOK_MARKER;
+import static org.apache.logging.log4j.core.spi.ShutdownRegistrationStrategy.SHUTDOWN_HOOK_MARKER;
 
 /**
  * The LoggerContext is the anchor for the logging system. It maintains a list

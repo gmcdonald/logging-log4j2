@@ -15,9 +15,11 @@
  * limitations under the license.
  */
 
-package org.apache.logging.log4j.core.util;
+package org.apache.logging.log4j.core.spi.impl;
 
 import java.io.Serializable;
+
+import org.apache.logging.log4j.core.spi.ShutdownRegistrationStrategy;
 
 /**
  * ShutdownRegistrationStrategy that simply uses {@link Runtime#addShutdownHook(Thread)}. If no strategy is specified,
