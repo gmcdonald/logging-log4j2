@@ -24,6 +24,7 @@ import java.util.Enumeration;
 /**
  * Abstract interface for a ClassLoader or similar object.
  */
+@Deprecated
 public interface ResourceLoader {
     Class<?> loadClass(String name) throws ClassNotFoundException;
     URL getResource(String name);

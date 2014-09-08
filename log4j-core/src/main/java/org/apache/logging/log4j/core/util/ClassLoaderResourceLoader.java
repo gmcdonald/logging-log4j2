@@ -24,6 +24,7 @@ import java.util.Enumeration;
 /**
  * ClassLoader-based ResourceLoader.
  */
+@Deprecated
 public final class ClassLoaderResourceLoader implements ResourceLoader {
 
     private final ClassLoader loader;
