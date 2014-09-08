@@ -45,13 +45,14 @@ public final class FileUtils {
     private FileUtils() {
     }
 
-      /**
+    /**
      * Tries to convert the specified URL to a file object. If this fails,
      * <b>null</b> is returned.
      *
      * @param uri the URI
      * @return the resulting file object
      */
+    @Deprecated
     public static File fileFromUri(URI uri) {
         if (uri == null || (uri.getScheme() != null &&
             (!PROTOCOL_FILE.equals(uri.getScheme()) && !JBOSS_FILE.equals(uri.getScheme())))) {
@@ -79,6 +80,7 @@ public final class FileUtils {
         return null;
     }
 
+    @Deprecated
     public static boolean isFile(final URL url) {
         return url != null && (url.getProtocol().equals(PROTOCOL_FILE) || url.getProtocol().equals(JBOSS_FILE));
     }
@@ -105,6 +107,16 @@ public final class FileUtils {
     }
 
     /**
+     * Cleans a {@link File} pathname by replacing Windows backslash directory separators with forward slashes.
+     *
+     * @param pathname the file pathname to clean
+     * @return the cleaned pathname
+     */
+    public static String cleanFilePath(final String pathname) {
+        return WINDOWS_DIRECTORY_SEPARATOR.matcher(pathname).replaceAll("/");
+    }
+
+    /**
      * Takes a given URI string which may contain backslashes (illegal in URIs) in it due to user input or variable
      * substitution and returns a URI with the backslashes replaced with forward slashes.
      *
@@ -113,6 +125,6 @@ public final class FileUtils {
      * @throws URISyntaxException if instantiating the URI threw a {@code URISyntaxException}.
      */
     public static URI getCorrectedFilePathUri(final String uri) throws URISyntaxException {
-        return new URI(WINDOWS_DIRECTORY_SEPARATOR.matcher(uri).replaceAll("/"));
+        return new URI(cleanFilePath(uri));
     }
 }
